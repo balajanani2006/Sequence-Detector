@@ -41,9 +41,7 @@ output reg detected
 typedef enum reg [2:0] {
     S0, S1, S2, S3, S4  // States for detecting 1011
 } state_t;
-
 state_t current_state, next_state;
-
 // State transition logic
 always @(posedge clk or posedge reset) begin
     if (reset)
@@ -51,7 +49,6 @@ always @(posedge clk or posedge reset) begin
     else
         current_state <= next_state;
 end
-
 // Next state and output logic
 always @(*) begin
     case (current_state)
@@ -107,7 +104,6 @@ always @(posedge clk or posedge reset) begin
     else
         current_state <= next_state;
 end
-
 // Next state and output logic
 always @(*) begin
     detected = 0;
@@ -135,26 +131,17 @@ always @(*) begin
     endcase
 end
 endmodule
-
-
-
 Testbench for Sequence Detector (Moore and Mealy FSMs)
-
-
-    
-        // sequence_detector_tb.v
+ // sequence_detector_tb.v
 `timescale 1ns / 1ps
-
 module sequence_detector_tb;
 // Inputs
 reg clk;
 reg reset;
 reg seq_in;
-
 // Outputs
 wire moore_detected;
 wire mealy_detected;
-
 // Instantiate the Moore FSM
 moore_sequence_detector moore_fsm (
     .clk(clk),
@@ -162,7 +149,6 @@ moore_sequence_detector moore_fsm (
     .seq_in(seq_in),
     .detected(moore_detected)
 );
-
 // Instantiate the Mealy FSM
 mealy_sequence_detector mealy_fsm (
     .clk(clk),
@@ -170,7 +156,6 @@ mealy_sequence_detector mealy_fsm (
     .seq_in(seq_in),
     .detected(mealy_detected)
 );
-
 // Clock generation
 always #5 clk = ~clk;  // Clock with 10 ns period
 
@@ -193,7 +178,6 @@ initial begin
     // Stop the simulation
     #30 $stop;
 end
-
 // Monitor the outputs
 initial begin
     $monitor("Time=%0t | seq_in=%b | Moore FSM Detected=%b | Mealy FSM Detected=%b",
