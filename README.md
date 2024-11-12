@@ -85,7 +85,6 @@ always @(*) begin
 end
 endmodule
 
-
 Verilog Code for Sequence Detector Using Mealy FSM
 
 / mealy_sequence_detector.v
