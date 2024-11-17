@@ -139,7 +139,7 @@ endmodule
 
 test bench
 // sequence_detector_tb.v
-`timescale 1ns / 1ps
+timescale 1ns / 1ps
 ```
 module sequence_detector_tb;
 // Inputs
