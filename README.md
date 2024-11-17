@@ -136,7 +136,7 @@ always @(*) begin
     endcase
 end
 endmodule
-
+```
 test bench
 // sequence_detector_tb.v
 timescale 1ns / 1ps
@@ -195,7 +195,7 @@ initial begin
              $time, seq_in, moore_detected, mealy_detected);
 end
 endmodule
-
+```
         
 
     .
